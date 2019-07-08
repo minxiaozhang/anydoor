@@ -22,25 +22,23 @@
     }
 };*/
 
-module.export={
-  "extends":["eslint:recommended"],
-  "rules":{
-    "no-console":["error",{
-      "allow":["warn","error","info"]
+module.exports = {
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "no-console": ["error", {
+      "allow": ["warn", "error", "info"]
     }]
   },
-  "parser":"babel-eslint",
-  "parserOptions":{
-    "ecmaVersion":6,
-    "sourceType":"script"
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script"
   },
-  "globals":{//指定可以访问的全局变量
-    //"window":true
+  "globals": {
   },
-  "env":{//指定执行环境
-    "browser":false,
-    "node":true,
-    "es6":true,
-    "mocha":true
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
   }
 };

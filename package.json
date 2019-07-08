@@ -6,13 +6,16 @@
     "lint": "eslint .",
     "fix": "eslint --fix"
   },
-    "pre-commit": [
-        "fix",
-        "lint"
-    ],
+  "pre-commit": [
+    "fix",
+    "lint"
+  ],
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "chalk": "^2.4.2",
     "eslint": "^6.0.1",
     "eslint-plugin-react": "^7.14.2",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "supervisor": "^0.12.0"
   }
 }
