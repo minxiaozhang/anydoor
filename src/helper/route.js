@@ -4,6 +4,7 @@ const stat=promisify(fs.stat);
 const readdir=promisify(fs.readdir);
 const Handlebars=require('handlebars');
 const path=require('path');
+const mime=require('./mime')
 const  conf=require('../config/defaultConfig'); //使用require 的时候可以放心的时候相对路径
 //读取页面模板，只执行一次
 const tplPath=path.join(__dirname,'../template/dir.tpl')
@@ -14,8 +15,9 @@ module.exports = async function(req,res,filePath) {
   try {
     const stats= await stat(filePath)
     if(stats.isFile()){
+      const contentType=mime(filePath)
       res.statusCode=200;
-      res.setHeader('Content-Type','text/plain;charset=utf-8');
+      res.setHeader('Content-Type',contentType+';charset=utf-8');
       fs.createReadStream(filePath).pipe(res); //建议用流的方式写
     }else if(stats.isDirectory()){
       const files= await readdir(filePath);
@@ -25,7 +27,11 @@ module.exports = async function(req,res,filePath) {
       const data={
         title:path.basename(filePath),
         dir:dir?`/${dir}`:'',
-        files,
+        files:files.map(file=>{
+
+              return {file,
+              icon:mime(file)}
+        })
       }
       res.end(template(data));
     }
