@@ -1,8 +1,11 @@
 {
   "name": "src",
   "version": "1.0.0",
+    "main": "src/app.js",
+    "bin": {"anydoor": "bin/any/index"},
   "dependencies": {
-    "handlebars": "^4.1.2"
+    "handlebars": "^4.1.2",
+    "yargs": "^13.3.0"
   },
   "scripts": {
     "lint": "eslint .",

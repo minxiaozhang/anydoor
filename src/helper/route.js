@@ -7,13 +7,13 @@ const path=require('path');
 const mime=require('./mime')//设置返回请求头
 const compress=require('./compress') //压缩文件
 const isFresh=require('./cache')
-const  conf=require('../config/defaultConfig'); //使用require 的时候可以放心的时候相对路径
+//const  conf=require('../config/defaultConfig'); //使用require 的时候可以放心的时候相对路径
 //读取页面模板，只执行一次
 const tplPath=path.join(__dirname,'../template/dir.tpl')
 const  source=fs.readFileSync(tplPath);
 const template=Handlebars.compile(source.toString())
 const range=require('./range')
-module.exports = async function(req,res,filePath) {
+module.exports = async function(req,res,filePath,conf) {
   try {
     const stats= await stat(filePath)
     if(stats.isFile()){
