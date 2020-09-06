@@ -4,7 +4,7 @@
     "main": "src/app.js",
     "bin": {"anydoor": "bin/any/index"},
   "dependencies": {
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.5.3",
     "yargs": "^13.3.0"
   },
   "scripts": {
